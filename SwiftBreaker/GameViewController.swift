@@ -12,7 +12,7 @@ import CoreMotion
 
 class GameViewController: UIViewController {
     
-    @IBOutlet var startButton : UIButton
+    @IBOutlet var startButton : UIButton?
     @IBAction func startTapped(sender : UIButton) {
         start()
     }
@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         
-        let skView = self.view as SKView
+        let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         
@@ -45,15 +45,15 @@ class GameViewController: UIViewController {
         
         //NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "log", userInfo: nil, repeats: true)
     }
-
+    
     override func shouldAutorotate() -> Bool {
         return false
     }
-
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.toRaw())
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
@@ -62,23 +62,25 @@ class GameViewController: UIViewController {
     func start() {
         motionManager.deviceMotionUpdateInterval = 1/60
         if motionManager.deviceMotionAvailable {
-            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {data, error in
-                let roll = data.attitude.roll
+            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: {data, error in
+                let roll = data!.attitude.roll
                 let paddle = self.scene.childNodeWithName("Paddle")
                 let paddleMove = SKAction.moveToX(self.findXforRotation(roll), duration: 1/60)
-                paddle.runAction(paddleMove)
-                } )
+                paddle!.runAction(paddleMove)
+            } )
         }
         
-        startButton.removeFromSuperview()
+        startButton!.removeFromSuperview()
         
         scene.start()
     }
     
     func log() {
-        println(scene.childNodeWithName("Brick").frame)
-        println(scene.childNodeWithName("Paddle").frame)
-        println(self.view.frame)
+        print(scene.childNodeWithName("Brick")!.frame)
+        print(scene.childNodeWithName("Paddle")!
+            
+            .frame)
+        print(self.view.frame)
     }
     
     func findXforRotation(rotation: Double) -> CGFloat {
