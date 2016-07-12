@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA9948F1D33E30E00441439 /* Bricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9948E1D33E30E00441439 /* Bricks.swift */; };
+		2FB3FC331D33F706004BC711 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB3FC321D33F706004BC711 /* Wall.swift */; };
 		E0F2F5261946520E00009A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2F5251946520E00009A78 /* AppDelegate.swift */; };
 		E0F2F5281946520E00009A78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E0F2F5271946520E00009A78 /* GameScene.sks */; };
 		E0F2F52A1946520E00009A78 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2F5291946520E00009A78 /* GameScene.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FA9948E1D33E30E00441439 /* Bricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bricks.swift; sourceTree = "<group>"; };
+		2FB3FC321D33F706004BC711 /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		E0F2F5201946520E00009A78 /* SwiftBreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F2F5241946520E00009A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0F2F5251946520E00009A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				E0F2F5251946520E00009A78 /* AppDelegate.swift */,
+				2FB3FC321D33F706004BC711 /* Wall.swift */,
+				2FA9948E1D33E30E00441439 /* Bricks.swift */,
 				E0F2F5271946520E00009A78 /* GameScene.sks */,
 				E0F2F5291946520E00009A78 /* GameScene.swift */,
 				E0F2F52B1946520E00009A78 /* GameViewController.swift */,
@@ -217,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB3FC331D33F706004BC711 /* Wall.swift in Sources */,
 				E0F2F52A1946520E00009A78 /* GameScene.swift in Sources */,
+				2FA9948F1D33E30E00441439 /* Bricks.swift in Sources */,
 				E0F2F52C1946520E00009A78 /* GameViewController.swift in Sources */,
 				E0F2F5261946520E00009A78 /* AppDelegate.swift in Sources */,
 			);

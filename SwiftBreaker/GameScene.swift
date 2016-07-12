@@ -39,8 +39,6 @@ class GameScene: SKScene {
         edges.physicsBody!.restitution = 1
         addChild(edges)
         
-        // I should probably make an extension with easy SKNode factory methods to get rid of this bloody boilerplate
-        
         
         
         
@@ -54,31 +52,47 @@ class GameScene: SKScene {
         //        brick.physicsBody!.dynamic = false
         //        addChild(brick)
         
-        let paddle = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 60, height: 10))
+        
+        
+        // Bricks
+//        let bricks = SKSpriteNode(color: UIColor.greenColor(), size: CGSize(width: 40, height: 10))
+//        bricks.name = "Bricks"
+//        bricks.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 40, height: 10))
+//        bricks.physicsBody!.friction = 0
+//        bricks.physicsBody!.restitution = 1
+//        bricks.physicsBody!.dynamic = false
+        
+        
+        // Paddle 1
+        let paddle = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 80, height: 10))
         paddle.position = CGPoint(x: CGRectGetMidX(self.frame), y: 10)
         paddle.name = "Paddle"
-        paddle.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 60, height: 10))
+        paddle.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 80, height: 10))
         paddle.physicsBody!.friction = 0
         paddle.physicsBody!.restitution = 1
         paddle.physicsBody!.dynamic = false
         addChild(paddle)
         
+        // Paddle 2
         let paddle2 = SKSpriteNode(color: UIColor.greenColor(), size: CGSize(width: 60, height: 10))
         paddle2.position = CGPoint(x: CGRectGetMidX(self.frame), y: 470)
         paddle2.name = "Paddle2"
-        paddle2.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 60, height: 10))
+        paddle2.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 80, height: 10))
         paddle2.physicsBody!.friction = 0
         paddle2.physicsBody!.restitution = 1
         paddle2.physicsBody!.dynamic = false
         addChild(paddle2)
         
+        // Ball
         let ball = SKSpriteNode(imageNamed: "BallForBreaker")
-        ball.position = CGPoint(x: CGRectGetMidX(self.frame), y: 20)
+        ball.position = CGPoint(x: CGRectGetMidX(self.frame), y: 25)
         ball.name = "Ball"
+        ball.xScale = 2.0
+        ball.yScale = 2.0
         //        ball.physicsBody.contactDelegate = ball
         
         // these properties are neccesary for the ball to go forever
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 3)
         ball.physicsBody!.mass = 1
         ball.physicsBody!.friction = 0
         ball.physicsBody!.restitution = 1
@@ -86,6 +100,23 @@ class GameScene: SKScene {
         ball.physicsBody!.usesPreciseCollisionDetection = true
         
         addChild(ball)
+        
+        let ball2 = SKSpriteNode(imageNamed: "BallForBreaker")
+        ball2.position = CGPoint(x: CGRectGetMidX(self.frame), y: 455)
+        ball2.name = "Ball2"
+        ball2.xScale = 1.6
+        ball2.yScale = 1.6
+        //        ball.physicsBody.contactDelegate = ball
+        
+        // these properties are neccesary for the ball to go forever
+        ball2.physicsBody = SKPhysicsBody(circleOfRadius: 3)
+        ball2.physicsBody!.mass = 1
+        ball2.physicsBody!.friction = 0
+        ball2.physicsBody!.restitution = 1
+        ball2.physicsBody!.linearDamping = 0
+        ball2.physicsBody!.usesPreciseCollisionDetection = true
+        
+        addChild(ball2)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -103,13 +134,13 @@ class GameScene: SKScene {
         let touch = touches.first
         if let touchLocation = touch?.locationInNode(self) {
             if (touchLocation.x < paddle!.position.x && touchLocation.y < 240 && gameGoing == true) {
-                paddle?.physicsBody?.dynamic = true
-                paddle?.physicsBody?.velocity = CGVectorMake(-100.0,0)
+                //                paddle?.physicsBody?.dynamic = true
+                paddle?.physicsBody?.velocity = CGVectorMake(-200.0,0)
                 print("left")
                 
                 //                paddle!.physicsBody!.xVelocity = -10
             } else if (touchLocation.y < 240 && gameGoing == true){
-                paddle?.physicsBody?.velocity = CGVectorMake(100.0,0)
+                paddle?.physicsBody?.velocity = CGVectorMake(200.0,0)
                 print("right")
                 //paddle!.physicsBody!.xVelocity = 10
             }
@@ -118,15 +149,12 @@ class GameScene: SKScene {
         /* Called when a touch begins */
         if let touchLocation = touch?.locationInNode(self) {
             if (touchLocation.x < paddle2!.position.x && touchLocation.y > 240 && gameGoing == true) {
-                paddle2?.physicsBody?.dynamic = true
-                paddle2?.physicsBody?.velocity = CGVectorMake(-100.0,0)
+                //                paddle2?.physicsBody?.dynamic = true
+                paddle2?.physicsBody?.velocity = CGVectorMake(-200.0,0)
                 print("right2")
-                
-                //                paddle!.physicsBody!.xVelocity = -10
             } else if (touchLocation.y > 240 && gameGoing == true){
-                paddle2?.physicsBody?.velocity = CGVectorMake(100.0,0)
+                paddle2?.physicsBody?.velocity = CGVectorMake(200.0,0)
                 print("left2")
-                //paddle!.physicsBody!.xVelocity = 10
             }
         }
         
@@ -135,6 +163,7 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
         
         Death()
     }
@@ -157,12 +186,17 @@ class GameScene: SKScene {
     
     
     func Death() {
-        let ball = childNodeWithName("Ball")
         
-        if (ball!.position.y < 10 || ball!.position.y > 470 && gameGoing == true) {
+        let ball = childNodeWithName("Ball")
+        let ball2 = childNodeWithName("Ball2")
+        
+       if (ball!.position.y < 10 || ball!.position.y > 470 || ball2!.position.y < 10 || ball2!.position.y > 470 && gameGoing == true) {
             print("death")
-            ball!.physicsBody!.applyImpulse(CGVector(dx: 190, dy: 190))
             gameGoing = false
+//            let gameScene = GameScene(size: self.size)
+//            let transition = SKTransition.doorsCloseHorizontalWithDuration(0.5)
+//            gameScene.scaleMode = SKSceneScaleMode.AspectFill
+//            self.scene!.view?.presentScene(gameScene, transition: transition)
         }
         
     }
@@ -186,10 +220,31 @@ class GameScene: SKScene {
     //}
     
     func start() {
+        let firstWall = Wall(numberOfBricks: 6, scene: self)
         let ball = childNodeWithName("Ball")
+        let ball2 = childNodeWithName("Ball2")
+        ball2!.position = CGPoint(x: CGRectGetMidX(self.frame), y: 460)
+        ball2!.physicsBody!.applyImpulse(CGVector(dx: 150, dy: 150))
         ball!.position = CGPoint(x: CGRectGetMidX(self.frame), y: 20)
-        ball!.physicsBody!.applyImpulse(CGVector(dx: 200, dy: 200))
+        ball!.physicsBody!.applyImpulse(CGVector(dx: 150, dy: 150))
         gameGoing = true
-    }
+        // Adds The Bricks
+        
+}
     //   func didBeginContact
+    //    func collisions() {
+    //        let ball = childNodeWithName("Ball")
+    //        let paddle = childNodeWithName("Paddle")
+    //        let paddle2 = childNodeWithName("Paddle2")
+    //        if ball!.position.y < 12 || ball!.position.y > 468 {
+    //            paddle?.physicsBody?.dynamic = false
+    //            paddle2?.physicsBody?.dynamic = false
+    //        }
+    //        else  {
+    //            paddle?.physicsBody?.dynamic = true
+    //            paddle2?.physicsBody?.dynamic = true
+    //        }
+    //    }
+
+
 }
