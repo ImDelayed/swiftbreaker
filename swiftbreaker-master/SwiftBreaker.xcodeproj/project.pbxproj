@@ -16,6 +16,8 @@
 		E0F2F52F1946520E00009A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0F2F52D1946520E00009A78 /* Main.storyboard */; };
 		E0F2F5311946520E00009A78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0F2F5301946520E00009A78 /* Images.xcassets */; };
 		E0F2F53D1946520E00009A78 /* SwiftBreakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2F53C1946520E00009A78 /* SwiftBreakerTests.swift */; };
+		FAF4CAF41D355AC700DA139E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4CAF31D355AC700DA139E /* Ball.swift */; };
+		FAF4CAF61D355ADC00DA139E /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4CAF51D355ADC00DA139E /* Paddle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		E0F2F5361946520E00009A78 /* SwiftBreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBreakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F2F53B1946520E00009A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0F2F53C1946520E00009A78 /* SwiftBreakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBreakerTests.swift; sourceTree = "<group>"; };
+		FAF4CAF31D355AC700DA139E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		FAF4CAF51D355ADC00DA139E /* Paddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				2FA9948E1D33E30E00441439 /* Bricks.swift */,
 				E0F2F5271946520E00009A78 /* GameScene.sks */,
 				E0F2F5291946520E00009A78 /* GameScene.swift */,
+				FAF4CAF31D355AC700DA139E /* Ball.swift */,
+				FAF4CAF51D355ADC00DA139E /* Paddle.swift */,
 				E0F2F52B1946520E00009A78 /* GameViewController.swift */,
 				E0F2F52D1946520E00009A78 /* Main.storyboard */,
 				E0F2F5301946520E00009A78 /* Images.xcassets */,
@@ -224,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB3FC331D33F706004BC711 /* Wall.swift in Sources */,
+				FAF4CAF41D355AC700DA139E /* Ball.swift in Sources */,
+				FAF4CAF61D355ADC00DA139E /* Paddle.swift in Sources */,
 				E0F2F52A1946520E00009A78 /* GameScene.swift in Sources */,
 				2FA9948F1D33E30E00441439 /* Bricks.swift in Sources */,
 				E0F2F52C1946520E00009A78 /* GameViewController.swift in Sources */,

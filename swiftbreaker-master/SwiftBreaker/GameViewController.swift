@@ -12,11 +12,6 @@ import CoreMotion
 
 class GameViewController: UIViewController {
     
-    @IBOutlet var startButton : UIButton?
-    @IBAction func startTapped(sender : UIButton) {
-        start()
-    }
-    
     let motionManager = CMMotionManager()
     var scene: GameScene!
     
@@ -69,8 +64,6 @@ class GameViewController: UIViewController {
                 paddle!.runAction(paddleMove)
             } )
         }
-        
-        startButton!.removeFromSuperview()
         
         scene.start()
     }

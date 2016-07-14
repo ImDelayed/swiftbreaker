@@ -14,7 +14,7 @@ class Wall {
     var xPositionBrick = 0
     var xPosition = 0
     init(numberOfBricks:Int, let scene:SKScene){
-        for i in 0...numberOfBricks - 1 {
+        for _ in 0...numberOfBricks - 1 {
             xPositionBrick += 1
             xPosition = (320 - xPositionBrick * 40) - (xPositionBrick * 5) + 5
             let currentBrick = Brick(atLocation: CGPoint(x: xPosition, y: 224), scene:scene)
